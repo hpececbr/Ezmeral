@@ -1,0 +1,111 @@
+
+DF1
+
+echo "" | plink  root@172.16.11.254 -pw Ezmeral@123 ("hostnamectl set-hostname dfpocn1.cecbr.net")
+echo "" | plink  root@172.16.11.254 -pw Ezmeral@123 ("sed -i 's/IPADDR=172.16.11.254/IPADDR=172.16.11.21/g' /etc/sysconfig/network-scripts/ifcfg-ens192")
+echo "" | plink  root@172.16.11.254 -pw Ezmeral@123 ("sed -i 's/IPADDR=172.18.11.254/IPADDR=172.18.11.21/g' /etc/sysconfig/network-scripts/ifcfg-ens224")
+echo "" | plink  root@172.16.11.254 -pw Ezmeral@123 ("reboot")
+
+
+DF2
+
+echo "" | plink  root@172.16.11.254 -pw Ezmeral@123 ("hostnamectl set-hostname dfpocn2.cecbr.net")
+echo "" | plink  root@172.16.11.254 -pw Ezmeral@123 ("sed -i 's/IPADDR=172.16.11.254/IPADDR=172.16.11.22/g' /etc/sysconfig/network-scripts/ifcfg-ens192")
+echo "" | plink  root@172.16.11.254 -pw Ezmeral@123 ("sed -i 's/IPADDR=172.18.11.254/IPADDR=172.18.11.22/g' /etc/sysconfig/network-scripts/ifcfg-ens224")
+echo "" | plink  root@172.16.11.254 -pw Ezmeral@123 ("reboot")
+
+
+DF3
+
+echo "" | plink  root@172.16.11.254 -pw Ezmeral@123 ("hostnamectl set-hostname dfpocn3.cecbr.net")
+echo "" | plink  root@172.16.11.254 -pw Ezmeral@123 ("sed -i 's/IPADDR=172.16.11.254/IPADDR=172.16.11.23/g' /etc/sysconfig/network-scripts/ifcfg-ens192")
+echo "" | plink  root@172.16.11.254 -pw Ezmeral@123 ("sed -i 's/IPADDR=172.18.11.254/IPADDR=172.18.11.23/g' /etc/sysconfig/network-scripts/ifcfg-ens224")
+echo "" | plink  root@172.16.11.254 -pw Ezmeral@123 ("reboot")
+
+
+echo "" | plink  root@172.16.11.254 -pw Ezmeral@123 ("hostnamectl set-hostname dfpocn2.cecbr.net")
+echo "" | plink  root@172.16.11.254 -pw Ezmeral@123 ("sed -i 's/IPADDR=172.16.11.254/IPADDR=172.16.11.22/g' /etc/sysconfig/network-scripts/ifcfg-ens192")
+echo "" | plink  root@172.16.11.254 -pw Ezmeral@123 ("sed -i 's/IPADDR=172.18.11.254/IPADDR=172.18.11.22/g' /etc/sysconfig/network-scripts/ifcfg-ens224")
+echo "" | plink  root@172.16.11.254 -pw Ezmeral@123 ("reboot")
+
+Controller
+
+echo "" | plink  root@172.16.11.199 -pw Ezmeral@123 ("hostnamectl set-hostname ecpcontroller.cecbr.net")
+echo "" | plink  root@172.16.11.199 -pw Ezmeral@123 ("sed -i 's/IPADDR=172.16.11.199/IPADDR=172.16.11.10/g' /etc/sysconfig/network-scripts/ifcfg-ens192")
+echo "" | plink  root@172.16.11.199 -pw Ezmeral@123 ("sed -i 's/IPADDR=172.18.11.199/IPADDR=172.18.11.10/g' /etc/sysconfig/network-scripts/ifcfg-ens224")
+echo "" | plink  root@172.16.11.199 -pw Ezmeral@123 ("echo "umask 0022" >> /etc/profile")
+echo "" | plink  root@172.16.11.199 -pw Ezmeral@123 ("echo "nameserver 172.0.0.100" >> /etc/resolv.conf")
+echo "" | plink  root@172.16.11.199 -pw Ezmeral@123 ("sed -i 's/SELINUX=enforcing/SELINUX=permissive/g' /etc/selinux/config")
+echo "" | plink  root@172.16.11.199 -pw Ezmeral@123 ("reboot")
+
+Gateway
+
+echo "" | plink  root@172.16.11.199 -pw Ezmeral@123 ("hostnamectl set-hostname ecpgateway.cecbr.net")
+echo "" | plink  root@172.16.11.199 -pw Ezmeral@123 ("sed -i 's/IPADDR=172.16.11.199/IPADDR=172.16.11.11/g' /etc/sysconfig/network-scripts/ifcfg-ens192")
+echo "" | plink  root@172.16.11.199 -pw Ezmeral@123 ("sed -i 's/IPADDR=172.18.11.199/IPADDR=172.18.11.11/g' /etc/sysconfig/network-scripts/ifcfg-ens224")
+echo "" | plink  root@172.16.11.199 -pw Ezmeral@123 ("echo "umask 0022" >> /etc/profile")
+echo "" | plink  root@172.16.11.199 -pw Ezmeral@123 ("echo "nameserver 172.0.0.100" >> /etc/resolv.conf")
+echo "" | plink  root@172.16.11.199 -pw Ezmeral@123 ("sed -i 's/SELINUX=enforcing/SELINUX=permissive/g' /etc/selinux/config")
+echo "" | plink  root@172.16.11.199 -pw Ezmeral@123 ("reboot")
+
+k8s1
+
+echo "" | plink  root@172.16.11.199 -pw Ezmeral@123 ("hostnamectl set-hostname ecpk8s1.cecbr.net")
+echo "" | plink  root@172.16.11.199 -pw Ezmeral@123 ("sed -i 's/IPADDR=172.16.11.199/IPADDR=172.16.11.12/g' /etc/sysconfig/network-scripts/ifcfg-ens192")
+echo "" | plink  root@172.16.11.199 -pw Ezmeral@123 ("sed -i 's/IPADDR=172.18.11.199/IPADDR=172.18.11.12/g' /etc/sysconfig/network-scripts/ifcfg-ens224")
+echo "" | plink  root@172.16.11.199 -pw Ezmeral@123 ("echo "umask 0022" >> /etc/profile")
+echo "" | plink  root@172.16.11.199 -pw Ezmeral@123 ("echo "nameserver 172.0.0.100" >> /etc/resolv.conf")
+echo "" | plink  root@172.16.11.199 -pw Ezmeral@123 ("sed -i 's/SELINUX=enforcing/SELINUX=permissive/g' /etc/selinux/config")
+echo "" | plink  root@172.16.11.199 -pw Ezmeral@123 ("reboot")
+
+k8s2
+
+echo "" | plink  root@172.16.11.199 -pw Ezmeral@123 ("hostnamectl set-hostname ecpk8s2.cecbr.net")
+echo "" | plink  root@172.16.11.199 -pw Ezmeral@123 ("sed -i 's/IPADDR=172.16.11.199/IPADDR=172.16.11.13/g' /etc/sysconfig/network-scripts/ifcfg-ens192")
+echo "" | plink  root@172.16.11.199 -pw Ezmeral@123 ("sed -i 's/IPADDR=172.18.11.199/IPADDR=172.18.11.13/g' /etc/sysconfig/network-scripts/ifcfg-ens224")
+echo "" | plink  root@172.16.11.199 -pw Ezmeral@123 ("echo "umask 0022" >> /etc/profile")
+echo "" | plink  root@172.16.11.199 -pw Ezmeral@123 ("echo "nameserver 172.0.0.100" >> /etc/resolv.conf")
+echo "" | plink  root@172.16.11.199 -pw Ezmeral@123 ("sed -i 's/SELINUX=enforcing/SELINUX=permissive/g' /etc/selinux/config")
+echo "" | plink  root@172.16.11.199 -pw Ezmeral@123 ("reboot")
+
+# Confiurando o Linux para logar no AD
+
+echo XXXXXXX | realm join --user=administrator dc1.cecbr.net
+
+# Replace XXXXXXXX by user passwords
+
+realm list
+
+echo "%CECBR\\\GP_Ezmeral_Admins ALL=(ALL)       ALL" >> /etc/sudoers
+
+sed -i 's/use_fully_qualified_names = True/use_fully_qualified_names = False/g' /etc/sssd/sssd.conf
+
+
+
+subscription-manager register --auto-attach --username XXXXXXXXXXXXXX --password XXXXXXXXX --force 
+
+# Replace XXXXXXXX by username and password
+
+=====================================================================================================
+
+mkdir .ssh
+ssh-keygen -b 2048 -t rsa -f /root/.ssh/id_rsa -q -N ""
+
+cat /root/.ssh/id_rsa.pub >> /root/.ssh/authorized_keys 
+cat .ssh/id_rsa.pub | ssh -oStrictHostKeyChecking=no  root@172.16.11.10 'cat >> .ssh/authorized_keys'
+
+
+cat .ssh/id_rsa.pub | ssh -oStrictHostKeyChecking=no  root@192.168.0.11 'cat >> .ssh/authorized_keys'
+cat .ssh/id_rsa.pub | ssh -oStrictHostKeyChecking=no  root@192.168.0.14 'cat >> .ssh/authorized_keys'
+cat .ssh/id_rsa.pub | ssh -oStrictHostKeyChecking=no  root@192.168.0.15 'cat >> .ssh/authorized_keys'
+
+ssh -oStrictHostKeyChecking=yes root@192.168.0.10
+
+mount -t nfs 172.16.3.18:/nfsrepo /mnt
+cp /mnt/5.4/hpe-cp-rhel-release-5.4-87.bin /root
+
+/root/hpe-cp-rhel-release-5.4-87.bin --default-password Ezmeral@123 --controller-public-if=ens192 --tier essentials --skipeula
+
+/root/hpe-cp-rhel-release-5.4-87.bin --default-password Ezmeral@123 --controller-public-if=ens192 --skipeula
+
+
